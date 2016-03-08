@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "../lib")))
+
+require "cc/engine"
+
+CC::Engine.each_issue do |issue|
+  if File.exist?(issue.filename)
+    print "#{issue.to_json}\0"
+  else
+    $stderr.puts "Omitting issue for non-existent file: #{issue.filename}"
+  end
+end
