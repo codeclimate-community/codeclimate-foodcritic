@@ -1,0 +1,16 @@
+engines:
+  bundler-audit:
+    enabled: true
+  rubocop:
+    enabled: true
+  fixme:
+    enabled: true
+
+ratings:
+  paths:
+  - bin/codeclimate-foodcritic
+  - "**.rb"
+
+exclude_paths:
+  - doc/**/*
+  - spec/**/*

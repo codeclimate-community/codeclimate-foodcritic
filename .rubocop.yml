@@ -1,0 +1,20 @@
+inherit_from: base_rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+
+Rails/Delegate:
+  Enabled: true
+
+Rails/TimeZone:
+  Enabled: true
+
+Style/GlobalVars:
+  AllowedVariables:
+    - $statsd
+    - $mongo
+    - $rollout
+    - $drip
+    - $redis
+
+
