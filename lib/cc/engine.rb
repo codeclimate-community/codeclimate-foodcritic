@@ -25,6 +25,10 @@ module CC
       linter.check(options).warnings
     end
 
+    def self.get_new_warnings
+      linter.new_warnings
+    end
+
     class Config
       DEFAULT_INCLUDE_PATHS = ["./"]
       DEFAULT_TAGS = ["~FC011", "~FC033"]
