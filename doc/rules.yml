@@ -1511,3 +1511,51 @@ FC062:
   - style
   - metadata
   remediation_points: 350000
+FC064:
+  code: FC064
+  name: Ensure issues_url is set in metadata
+  tags:
+  - metadata
+  - supermarket
+  summary: |
+    This warning is shown if a cookbook does not include the issues\_url
+    property in its metadata file. issues\_url is used to point to the location
+    for submitting issues (bugs) for the cookbook and is currently parsed by
+    Supermarket to add links to community cookbooks. Note: issues\_url is a Chef
+    12 only feature that will cause cookbook failures in Chef 11 so it should
+    be properly gated if the code will be run on Chef 11 hosts.
+  examples:
+  - title: Metadata without issues_url
+    code: |
+      name 'example'
+      version '1.0.0'
+  - title: Modified version with Chef 11 compatibility check
+    code: |
+      name 'example'
+      version '1.0.0'
+      issues_url 'https://github.com/chef-cookbooks/something/issues' if respond_to?(:issues_url)
+  remediation_points: 50000
+FC065:
+  code: FC065
+  name: Ensure source_url is set in metadata
+  tags:
+  - metadata
+  - supermarket
+  summary: |
+    This warning is shown if a cookbook does not include the source\_url
+    property in its metadata file. source\_url is used to point to the source
+    location for the cookbook and is currently parsed by Supermarket to add
+    links to community cookbooks. Note: source\_url is a Chef 12 only feature
+    that will cause cookbook failures in Chef 11 so it should be properly gated
+    if the code will be run on Chef 11 hosts.
+  examples:
+  - title: Metadata without source_url
+    code: |
+      name 'example'
+      version '1.0.0'
+  - title: Modified version with Chef 11 compatibility check
+    code: |
+      name 'example'
+      version '1.0.0'
+      source_url 'https://github.com/chef-cookbooks/something' if respond_to?(:source_url)
+  remediation_points: 50000
