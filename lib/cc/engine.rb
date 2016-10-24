@@ -16,6 +16,7 @@ module CC
       config = Config.new
       options = {
         cookbook_paths: config.cookbook_paths,
+        include_rules: config.include_rules,
         progress: false,
         tags: config.tags,
       }
@@ -39,6 +40,10 @@ module CC
 
       def cookbook_paths
         engine_config.fetch("cookbook_paths") { expand_include_paths }
+      end
+
+      def include_rules
+        engine_config.fetch("include_rules", [])
       end
 
       def tags

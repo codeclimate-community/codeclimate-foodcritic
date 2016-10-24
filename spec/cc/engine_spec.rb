@@ -57,6 +57,23 @@ module CC
         end
       end
 
+      describe "#include_rules" do
+        it "provides a default" do
+          config = Engine::Config.new
+          expect(config.include_rules).to(eq([]))
+        end
+
+        it "allows overrides via config" do
+          Tempfile.open("config.json") do |tmp|
+            tmp.write(%{ {"config":{"include_rules":["some_rule.rb","some_other_rule.rb"]}} })
+            tmp.rewind
+
+            config = Engine::Config.new(tmp.path)
+            expect(config.include_rules).to eq %w[some_rule.rb some_other_rule.rb]
+          end
+        end
+      end
+
       describe "#tags" do
         it "has a sane default" do
           config = Engine::Config.new
