@@ -7,12 +7,12 @@ module CC
     def self.each_issue
       rules = Rules.new
 
-      get_warnings.each do |lint|
+      warnings.each do |lint|
         yield Issue.new(lint, rules)
       end
     end
 
-    def self.get_warnings
+    def self.warnings
       config = Config.new
       options = {
         cookbook_paths: config.cookbook_paths,
@@ -30,7 +30,7 @@ module CC
       DEFAULT_TAGS = ["~FC011", "~FC033"]
 
       def initialize(path = "/config.json")
-        if File.exists?(path)
+        if File.exist?(path)
           @config = JSON.parse(File.read(path))
         else
           @config = {}
@@ -69,7 +69,7 @@ module CC
 
     class Rules
       def initialize(path = "/rules.yml")
-        if File.exists?(path)
+        if File.exist?(path)
           @config = YAML.load_file(path)
         else
           @config = {}
