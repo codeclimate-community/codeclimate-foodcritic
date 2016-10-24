@@ -14,8 +14,8 @@ engines:
 
 ## Configuration
 
-This engine accepts `tags` and `cookbook_paths` in its configuration. Both
-values are optional:
+This engine accepts `tags`, `cookbook_paths` and `include_rules` in its
+configuration. All values are optional:
 
 ```yml
 engines:
@@ -28,6 +28,9 @@ engines:
       cookbook_paths:
       - libraries/mysql.rb
       - libraries/docker.rb
+      include_rules:
+      - rules/my_custom_rule.rb
+      - rules/my_other_custom_rule.rb
 ```
 
 **NOTE**: `cookbook_paths`, when defined, are passed directly to Foodcritic and
